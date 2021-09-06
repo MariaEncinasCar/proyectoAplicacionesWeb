@@ -1,0 +1,131 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema blog
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema blog
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `blog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `blog` ;
+
+-- -----------------------------------------------------
+-- Table `blog`.`post`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `blog`.`post` (
+  `id_post` INT NOT NULL AUTO_INCREMENT,
+  `fechaHoraCreacion` DATETIME NOT NULL,
+  `titulo` VARCHAR(45) NOT NULL,
+  `contenido` VARCHAR(200) NOT NULL,
+  `fechaHoraEdicion` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id_post`),
+  UNIQUE INDEX `id_post_UNIQUE` (`id_post` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `blog`.`estado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `blog`.`estado` (
+  `id_estado` INT NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(45) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_estado`),
+  UNIQUE INDEX `id_estado_UNIQUE` (`id_estado` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `blog`.`municipio`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `blog`.`municipio` (
+  `id_municipio` INT NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(45) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `estado` INT NOT NULL,
+  PRIMARY KEY (`id_municipio`),
+  UNIQUE INDEX `id_municipio_UNIQUE` (`id_municipio` ASC) VISIBLE,
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE,
+  INDEX `estado_idx` (`estado` ASC) VISIBLE,
+  CONSTRAINT `estado`
+    FOREIGN KEY (`estado`)
+    REFERENCES `blog`.`estado` (`id_estado`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `blog`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `blog`.`usuario` (
+  `id_usuario` INT NOT NULL AUTO_INCREMENT,
+  `correo` VARCHAR(50) NOT NULL,
+  `contrasena` VARCHAR(50) NOT NULL,
+  `telefono` VARCHAR(10) NULL DEFAULT NULL,
+  `avatar` VARCHAR(20) NOT NULL,
+  `ciudad` VARCHAR(45) NOT NULL,
+  `fechaNacimiento` DATE NOT NULL,
+  `genero` CHAR(1) NOT NULL,
+  `municipio` INT NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE INDEX `correo_UNIQUE` (`correo` ASC) VISIBLE,
+  UNIQUE INDEX `avatar_UNIQUE` (`avatar` ASC) VISIBLE,
+  UNIQUE INDEX `telefono_UNIQUE` (`telefono` ASC) VISIBLE,
+  INDEX `municipio_idx` (`municipio` ASC) VISIBLE,
+  CONSTRAINT `municipio`
+    FOREIGN KEY (`municipio`)
+    REFERENCES `blog`.`municipio` (`id_municipio`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `blog`.`comentario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `blog`.`comentario` (
+  `id_post` INT NOT NULL AUTO_INCREMENT,
+  `fechaHora` DATETIME NOT NULL,
+  `contenido` VARCHAR(200) NOT NULL,
+  `post` INT NOT NULL,
+  `usuario` INT NOT NULL,
+  PRIMARY KEY (`id_post`),
+  UNIQUE INDEX `id_post_UNIQUE` (`id_post` ASC) VISIBLE,
+  INDEX `post_idx` (`post` ASC) VISIBLE,
+  INDEX `usuario_idx` (`usuario` ASC) VISIBLE,
+  CONSTRAINT `post`
+    FOREIGN KEY (`post`)
+    REFERENCES `blog`.`post` (`id_post`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `usuario`
+    FOREIGN KEY (`usuario`)
+    REFERENCES `blog`.`usuario` (`id_usuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
