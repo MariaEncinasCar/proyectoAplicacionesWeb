@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Crear publicación</title>
+        <link rel="stylesheet" href="cssPublicar.css"> 
+    </head>
+    <body>
+        <form class="formulario">
+            <section>
+                <h1>Crear publicacion <img src="ImagenPerfil.jpg" width="100px" class="imagenPerfil"></h1>
+            </section>
+            <section class="contenedor">
+                <article class="input-Titulo">
+                    <input type="Text" placeholder="Aquí se encuentra el título" id="campoTitulo"/>
+                </article>
+                <article>
+                    <input type="button" name="ToolBar" value="Botones barra de herramientas" id="btnToolbar"/>
+                    <input type="button" name="vistaPrevia" value="Vista Previa" id="btnVistaPrevia"/>
+                    <input type="button" name="Publicar" value="Publicar" id="btnPublicar" onclick = "location='Muro.html'"/>
+                </article>
+                <article class="input-Contenido">
+                    <input type="text" placeholder="Aquí se encuentra contenido de la publicación" id="campoContenido"/>
+                </article>
+            </section>
+            <input type="checkbox" id="CheckAnclar" name="Anclar" value="Anclar">
+            <label for="CheckAnclar"> Anclar</label><br>
+        </form>
+    </body>
+</html>

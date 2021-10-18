@@ -1,0 +1,82 @@
+<html>
+
+<head>
+  <title>Muro</title>
+  <link rel="stylesheet" type="text/css" href="cssMuro.css" />
+  <style type="text/css">
+    body {
+      color: #3b3a3a;
+      background-color: #3b3a3a;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="columnas-muro">
+    <section class="columna-der">
+      <article class="elemento">
+        <header>
+          <h2>Publicación</h2>
+          <h5>Descripción, dd/mm/aaaa</h5>
+        </header>
+        <figure class="contenido">Publicación</figure>
+
+        <article class="comentario">
+          Comentario
+          <article class="comentador">
+            <img src="comentador.jpeg" />
+          </article>
+        </article>
+
+        <!-- comentarios -->
+        <section>
+          <details>
+            <summary style="font-size: x-large">Comentar</summary>
+            <section class="caja-comentario">
+              <textarea name="area-comentario" id="area-comentario" cols="50" rows="10"></textarea>
+              <input type="button" value="Enviar comentario" class="btn-enviar-comentario" />
+            </section>
+          </details>
+        </section>
+
+        <!-- fin comentarios  -->
+      </article>
+
+      <article class="elemento">
+        <header>
+          <h2>Publicación</h2>
+          <h5>Descripción, dd/mm/aaaa</h5>
+        </header>
+
+        <figure class="contenido">Publicación</figure>
+
+        <article class="comentario">
+          Comentario
+          <article class="comentador">
+            <img src="comentador.jpeg" />
+          </article>
+        </article>
+
+        <section>
+          <details>
+            <summary style="font-size: x-large">Comentar</summary>
+            <section class="caja-comentario">
+              <textarea name="area-comentario" id="area-comentario" cols="50" rows="10"></textarea>
+              <input type="button" value="Enviar comentario" class="btn-enviar-comentario" />
+            </section>
+          </details>
+        </section>
+      </article>
+    </section>
+    <section class="columna-izq">
+      <article class="elemento">
+        <img class="perfil" src="fotoPerfil.jpeg" />
+        <figcaption style="text-align: center">Paco O'sea</figcaption>
+        <input class="boton" type="button" value="Publicar" onclick="location='CrearPublicacion.html'" />
+        <input class="boton" type="button" value="Salir" onclick="location='Login.html'" />
+      </article>
+    </section>
+  </section>
+</body>
+
+</html>

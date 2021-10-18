@@ -1,0 +1,82 @@
+body{
+    font-family: Arial;
+    margin: 0;
+    background-color: #3B3A3A;
+}
+.contenedor{
+    width: 100%;
+    padding: 15px;
+}
+.formulario{
+    background: #e0dfde;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 300px;
+    padding: 3px;
+}
+h1{
+    text-align: left;
+    margin-left: 15;
+    color: black;
+    font-size: 30px;
+    margin-right: 50px;
+}
+.input-Titulo{
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    width: 600px;
+}
+input[type="Text"]{
+    font-size: 20px;
+    width: 50%;
+    padding: 10px;
+    border: none;
+    margin-right: auto;
+}
+#campoTitulo {
+    width: 600px;
+    background-color: #e0dfde;
+}
+.input-Contenido{
+    margin-top: 15px;
+    border: 1px solid #aaa;
+    width: 900px;
+    height: 280px;
+}
+#campoContenido{
+    width: 900px;
+    height: 280px;
+    background-color: #e0dfde;
+}
+#btnToolbar{
+    display: inline;
+    border: none;
+    width: 30%;
+    color: white;
+    font-size: 14px;
+    background: #3B3A3A;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 330px;
+}
+#btnVistaPrevia,
+#btnPublicar {
+    display: inline;
+    border: none;
+    width: 12%;
+    color: white;
+    font-size: 14px;
+    background: #3B3A3A;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.imagenPerfil{
+    min-width: 100px;
+    margin-left: 550px;
+    border-radius: 50%;
+}
+#checkAnclar{
+    margin-left: 850px;
+}
